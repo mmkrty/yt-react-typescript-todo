@@ -1,5 +1,5 @@
 export interface Todo {
   id: number;
-  todao: string;
+  todo: string;
   isDone: boolean;
 }
