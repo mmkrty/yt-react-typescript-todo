@@ -3,7 +3,6 @@ import "./styles.css";
 import { Todo } from "../model";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
-import TodoList from "./TodoList";
 import { Draggable } from "react-beautiful-dnd";
 
 interface Props {
@@ -45,9 +44,9 @@ const TodoCard = ({ todo, todos, setTodos, index }: Props) => {
 
   return (
     <Draggable draggableId={todo.id.toString()} index={index}>
-      {(provided) => (
+      {(provided, snapshot) => (
         <form
-          className="todo__card"
+          className={`todo__card ${snapshot.isDragging ? "drag" : ""}`}
           onSubmit={(e) => handleSubmit(e, todo.id)}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
